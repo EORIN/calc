@@ -29,7 +29,7 @@ function calculator(string){
     ['X', 10]
     ]);
     let roman2 = [
-    [' ', 0]
+    [' ', 0],
     ['I', 1],
     ['II' , 2],
     ['III' , 3],
@@ -84,35 +84,37 @@ function calculator(string){
     string = o * n;
     }
     }
+    function toRoman1 (){
+        let res = 'X'.repeat(String(string)[0]) + roman2[Number(String(string)[1])][0]
+        if(String(string)[0] == 4){
+            res = 'XL'+ roman2[Number(String(string)[1])][0]
+        }
+        else if(String(string)[0] >= 5){
+            res = 'L'+ 'X'.repeat(String(string)[0] - 5) + roman2[Number(String(string)[1])][0]
+        }
+        
+        
+
+       
+
+    }
     function lCheck(){
+    
         
     if(string <= 0 && isRoman == 1){
     string = ''
     
     }
-    else if(isRoman == 1 && string <= 11){
+    else if(isRoman == 1 && string <= 10){
     string = roman2[string][0]
     }
     else if(string > 10 && isRoman == 1){
-        
-        let res = roman2[Number(String(string)[0])][0] + 'X' + roman2[Number(String(string)[1])][0]
-        console.log(roman2[Number(String(string)[1])][0], 'g')
-        if(string < 20){
-        string = res.substring(1)
-        
-        }
-        else if(string == 100){
-            string = 'C'
-        }
-        else if(string == 20){
-            string = 'XX'
-        }
-        else {
-            string = res
-        }
+        toRoman1()
+
     }
     }    
     function calculate(secator){
+
     throws();
     if (roman1.has(secator[0]) && roman1.has(secator[2])){
     isRoman +=1
@@ -130,5 +132,5 @@ function calculator(string){
     return String(string)}
     }
     
-    console.log(calculator('X * IX'))
+    console.log(calculator('VII * IIX'))
     
