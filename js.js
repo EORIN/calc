@@ -29,7 +29,7 @@ function calculator(string){
     ['X', 10]
     ]);
     let roman2 = [
-    [' ', 0],
+    ['', 0],
     ['I', 1],
     ['II' , 2],
     ['III' , 3],
@@ -85,22 +85,29 @@ function calculator(string){
     }
     }
     function toRoman1 (){
+        
         let res = 'X'.repeat(String(string)[0]) + roman2[Number(String(string)[1])][0]
+       
         if(String(string)[0] == 4){
             res = 'XL'+ roman2[Number(String(string)[1])][0]
+            string = res
         }
-        else if(String(string)[0] >= 5){
+        else if(String(string)[0] >= 5 && String(string)[0] < 9){
             res = 'L'+ 'X'.repeat(String(string)[0] - 5) + roman2[Number(String(string)[1])][0]
+            string = res
         }
-        
-        
-
-       
-
+        else if(String(string)[0] >= 9){
+            res = 'XC' + roman2[Number(String(string)[1])][0]
+            string = res
+        }
+        else if(string == 100){
+            string = 'C'
+        }
+        else{
+            string=res 
+        }
     }
     function lCheck(){
-    
-        
     if(string <= 0 && isRoman == 1){
     string = ''
     
@@ -128,9 +135,9 @@ function calculator(string){
     if (string.length < 1){
         return ''
     }
-    else{
+    else{ console.log(string)
     return String(string)}
     }
     
-    console.log(calculator('VII * IIX'))
+    console.log(calculator('X + X'))
     
